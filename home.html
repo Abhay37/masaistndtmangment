@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: rgba(150, 64, 64, 0.936);
+        }
+        #navbar{
+       border: 1px solid blueviolet;
+       width: 80%;
+       height: 50px;
+       margin:auto;
+       margin-bottom: 10px;
+       background-color: rgba(0, 0, 0, 0.922);
+       display: flex;
+       justify-content: space-between;
+       
+
+        }
+        #heading{
+         
+            margin: auto;
+            border: 1px solid red;
+            width: 400px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: aliceblue;
+            background-color: rgb(141, 200, 23);
+
+        }
+        #detail{
+            border: 1px solid rgb(247, 228, 228);
+            width: 40%;
+            height: 400px;
+            margin: auto;
+            margin-top: 10px;
+            display: flex;
+            gap: 10px;
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        }
+        #name{
+            width: 80%;
+            height:30px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            margin-left: 50px;
+            margin-top: 10px;
+        }
+        #course{
+            width: 80%;
+            height:30px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            margin-left: 50px;
+        }
+        #unit{
+            width: 80%;
+            height:30px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            margin-left: 50px;
+        }
+        #img{
+            width: 80%;
+            height:30px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            margin-left: 50px;
+        }
+        #btch{
+            width: 80%;
+            height:30px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            margin-left: 50px;
+        }
+        #sbmt{
+            width: 30%;
+            height:30px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            margin-left: 170px;
+
+        }
+        #sbmt:hover{
+            background-color: blue;
+            color: yellow;
+        }
+        #dsbrd{
+          
+            /* border: 1px solid white; */
+            width: 300px;
+            height: 45px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            }
+            #dsbrd>div{
+                /* border: 1px solid white;
+ */
+
+            }
+            a{
+                text-decoration: none;
+                font-size: 22px;
+                color: aliceblue;
+            }
+            #count{
+
+                /* border: 1px solid white; */
+                width: 300px;
+                height: 50px;
+                display: flex;
+                justify-content: space-between;
+                
+            }
+            #count>h3{
+                color: white;
+            }
+            a:hover{
+                color:red;
+            }
+           
+    </style>
+</head>
+<body>
+    <div  id="navbar">
+      <div id="dsbrd">
+        <div>
+            <a href="dashborad.html">dashboard</a>
+        </div>  
+          
+      </div>
+      
+      <div id="count" >
+          <h3>
+              Batch01-
+              
+              
+               || 
+               
+               Batch02- 
+              
+          </h3>
+      </div>
+
+
+    </div>
+    <div id="heading">
+        <h2>
+            Input student details here
+        </h2>
+    </div>
+   <div id="detail">
+    <form id="form">
+        <input id="name" type="text" placeholder="Name">
+        <input id="course" type="text" placeholder="course">
+        <input id="unit" type="text" placeholder="unit">
+        <input id="img" type="url" placeholder="img_url">
+        <input id="btch" type="text" placeholder="Batch">
+        <input id="sbmt" type="submit">
+   
+   
+   
+   
+       </form>
+
+   </div>
+
+
+</body>
+</html>
+<script>
+var list_of_student=[];
+var form=document.querySelector("#form");
+form.addEventListener("submit",storedetail)
+function storedetail(){
+  event.preventDefault()
+var obj={
+namo:form.name.value,
+crse:form.course.value,
+unt:form.unit.value,
+img:form.img.value,
+Btch:form.btch.value,
+}
+
+list_of_student.push(obj)
+var x=localStorage.setItem("studentdetail",JSON.stringify(list_of_student));
+ 
+
+}
+
+
+
+
+
+
+
+
+</script>

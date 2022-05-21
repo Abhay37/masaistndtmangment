@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <style>
+        table,
+          td,
+          th 
+        {
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+        table 
+        {
+            border-collapse: collapse;
+            width: 70%;
+            margin: auto;
+            margin-top: 50px;
+        }
+        th,
+        td 
+        {
+        padding: 15px;
+        }
+
+        tr > th 
+        {
+        background-color: teal;
+        color: white;
+        }
+        #navbar{
+       border: 1px solid blueviolet;
+       width: 80%;
+       height: 50px;
+       margin:auto;
+       margin-bottom: 10px;
+       background-color: rgba(0, 0, 0, 0.922);
+       display: flex;
+       justify-content: space-between;
+        }
+        #dsbrd{
+          
+          /* border: 1px solid white; */
+          width: 300px;
+          height: 45px;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          }
+          #dsrbd>div{
+              border: 1px solid white;
+          }
+          a{
+              text-decoration: none;
+              font-size: 22px;
+              color: aliceblue;
+          }
+          #count{
+
+              /* border: 1px solid white; */
+              width: 500px;
+              height: 50px;
+              display: flex;
+              
+              align-items: center;
+              justify-content: space-between;
+              
+          }
+          #count>h3{
+              color: white;
+          }
+          a:hover{
+              color:red;
+          }
+    </style>
+
+</head>
+<body>
+    <div  id="navbar">
+        <div id="dsbrd">
+            
+            <div>
+                <a href="dashborad.html">dashboard</a>
+            </div>  
+              <div>
+                <a href="home.html">Home</a>
+              </div>
+        </div>
+        
+        <div id="count" >
+            <!-- <h3>
+                Batch01-
+                
+                
+                 || 
+                 
+                 Batch02- 
+                
+            </h3> -->
+        </div>
+  
+  
+      </div>
+    <table>
+        <thead>
+            <tr>
+                <th>Image</th>
+                <th>Name</th>
+                <th>course</th>
+                <th>Batch</th>
+                <th>Unit</th>
+            </tr>
+        </thead>
+        <tbody id="body">
+         
+        </tbody>
+    </table>
+
+
+
+
+
+</body>
+</html>
+<script>
+var listofstdnt=JSON.parse(localStorage.getItem("studentdetail"));
+var obj={}
+listofstdnt.forEach(function(ele,index) {
+    var tr=document.createElement("tr");
+    var td1=document.createElement("img");
+    td1.style.width="100%";
+    td1.style.width="100px";
+    td1.setAttribute("src",ele.img)
+    
+    td1.setAttribute("src",ele.img)
+    var td2=document.createElement("td");
+    td2.innerHTML=ele.namo
+    var td3=document.createElement("td");
+    td3.innerHTML=ele.crse
+    var td4=document.createElement("td");
+    td4.innerHTML=ele.Btch
+    var td5=document.createElement("td");
+    td5.innerHTML=ele.unt;
+    var delte=document.createElement("button")
+    delte.innerText="remove"
+    delte.style.alignSelf="center"
+    delte.addEventListener("click",function(){
+
+        removeindex(ele,index)
+        
+    })
+     
+
+    
+    tr.append(td1,td2,td3,td4,td5,delte);
+    document.querySelector("#body").append(tr)
+    for(var i=0;i<listofstdnt.length;i++)
+    {
+        var count=0
+       for(var j=0;j<listofstdnt.length;j++)
+       {
+           if(listofstdnt[i].Btch==listofstdnt[j].Btch)
+           {
+              count++;
+           }
+           obj[listofstdnt[i].Btch]=count;
+       }
+
+    }
+    
+
+    
+});
+var count=document.querySelector("#count");
+count.style.color="white"
+ for(var k in obj)
+ {
+   count.append(" "+k+"-"+obj[k]+"||")
+
+ }
+ console.log(obj)
+   function  removeindex(ele,index)
+    {
+
+        listofstdnt.splice(index,1);
+        localStorage.setItem("studentdetail", JSON.stringify(listofstdnt))
+        window.location.reload()
+
+    }
+  
+
+
+
+</script>
